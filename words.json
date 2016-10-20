@@ -1,0 +1,56 @@
+[
+  { 
+    "title": "Cuckoo",
+    "bird": true,
+    "lower": false,
+    "crazy": true,
+    "joke": false,
+    "icecream": false,
+    "game": false
+  }, 
+  {
+    "title": "Duck",
+    "bird": true,
+    "lower": true,
+    "crazy": false,
+    "joke": false,
+    "icecream": false,
+    "game": false
+  }, 
+  {
+    "title": "Dipper",
+    "bird": true,
+    "lower": false,
+    "crazy": true,
+    "joke": false,
+    "icecream": false,
+    "game": false
+  },
+  { 
+    "title": "Lark",
+    "bird": true,
+    "lower": false,
+    "crazy": false,
+    "joke": true,
+    "icecream": false,
+    "game": false
+  }, 
+  {
+    "title": "Screwball",
+    "bird": false,
+    "lower": false,
+    "crazy": true,
+    "joke": false,
+    "icecream": true,
+    "game": false
+  }, 
+  {
+    "title": "Twister",
+    "bird": false,
+    "lower": false,
+    "crazy": false,
+    "joke": false,
+    "icecream": true,
+    "game": true
+  }
+]
