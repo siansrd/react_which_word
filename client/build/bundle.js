@@ -19756,6 +19756,7 @@
 	
 	var React = __webpack_require__(1);
 	var WordList = __webpack_require__(160);
+	var ClueSelector = __webpack_require__(163);
 	
 	var Game = React.createClass({
 	  displayName: 'Game',
@@ -19797,7 +19798,8 @@
 	          'h2',
 	          null,
 	          'Clues'
-	        )
+	        ),
+	        React.createElement(ClueSelector, null)
 	      ),
 	      React.createElement(
 	        'div',
@@ -19942,6 +19944,31 @@
 		}
 	}());
 
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var ClueSelector = React.createClass({
+	  displayName: 'ClueSelector',
+	
+	
+	  render: function render() {
+	
+	    return React.createElement(
+	      'h1',
+	      null,
+	      'Clue selector'
+	    );
+	  }
+	
+	});
+	
+	module.exports = ClueSelector;
 
 /***/ }
 /******/ ]);

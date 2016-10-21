@@ -1,5 +1,6 @@
 var React = require('react');
 var WordList = require('./WordList');
+var ClueSelector = require('./ClueSelector')
 
 var Game = React.createClass({
 
@@ -27,6 +28,7 @@ var Game = React.createClass({
         </div>
         <div className="questionsWrap">
           <h2>Clues</h2>
+          <ClueSelector/>
         </div>
         <div className="guessWrap">
           <h2>Guess</h2>
