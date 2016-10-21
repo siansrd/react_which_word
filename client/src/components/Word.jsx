@@ -15,9 +15,7 @@ var Word = React.createClass({
   render: function(){
     var classes = classnames('word', {crossed: this.state.crossed});
     return (
-      <div>
-        <p className={classes} onClick={this.handleClick}>{this.props.title}</p>
-      </div>
+      <p className={classes} onClick={this.handleClick}>{this.props.title}</p>
     )
   }
 })

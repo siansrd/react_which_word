@@ -19883,13 +19883,9 @@
 	  render: function render() {
 	    var classes = (0, _classnames2.default)('word', { crossed: this.state.crossed });
 	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'p',
-	        { className: classes, onClick: this.handleClick },
-	        this.props.title
-	      )
+	      'p',
+	      { className: classes, onClick: this.handleClick },
+	      this.props.title
 	    );
 	  }
 	});
