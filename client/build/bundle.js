@@ -19874,7 +19874,7 @@
 	  },
 	
 	  render: function render() {
-	    var classes = (0, _classnames2.default)({ crossed: this.state.crossed });
+	    var classes = (0, _classnames2.default)('word', { crossed: this.state.crossed });
 	    return React.createElement(
 	      'div',
 	      null,
