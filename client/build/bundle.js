@@ -19757,6 +19757,7 @@
 	var React = __webpack_require__(1);
 	var WordList = __webpack_require__(160);
 	var ClueSelector = __webpack_require__(163);
+	var GuessSelector = __webpack_require__(164);
 	
 	var Game = React.createClass({
 	  displayName: 'Game',
@@ -19799,7 +19800,7 @@
 	          null,
 	          'Clues'
 	        ),
-	        React.createElement(ClueSelector, null)
+	        React.createElement(ClueSelector, { words: this.state.words })
 	      ),
 	      React.createElement(
 	        'div',
@@ -19808,7 +19809,8 @@
 	          'h2',
 	          null,
 	          'Guess'
-	        )
+	        ),
+	        React.createElement(GuessSelector, { words: this.state.words })
 	      )
 	    );
 	  }
@@ -19830,12 +19832,15 @@
 	  displayName: 'WordList',
 	
 	
-	  render: function render() {
-	
+	  createList: function createList() {
 	    var wordList = this.props.words.map(function (word, index) {
 	      return React.createElement(Word, { title: word.title, key: index });
 	    });
+	    return wordList;
+	  },
 	
+	  render: function render() {
+	    var wordList = this.createList();
 	    return React.createElement(
 	      'div',
 	      null,
@@ -19949,26 +19954,75 @@
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
 	var ClueSelector = React.createClass({
-	  displayName: 'ClueSelector',
+	  displayName: "ClueSelector",
 	
+	
+	  createSelector: function createSelector() {
+	    var options = this.props.words.map(function (word, index) {
+	      return React.createElement(
+	        "option",
+	        { key: index },
+	        word.title
+	      );
+	    });
+	    return options;
+	  },
 	
 	  render: function render() {
 	
+	    var options = this.createSelector();
 	    return React.createElement(
-	      'h1',
-	      null,
-	      'Clue selector'
+	      "select",
+	      { id: "wordsDropdown" },
+	      options
 	    );
 	  }
 	
 	});
 	
 	module.exports = ClueSelector;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var GuessSelector = React.createClass({
+	  displayName: "GuessSelector",
+	
+	
+	  createSelector: function createSelector() {
+	    var options = this.props.words.map(function (word, index) {
+	      return React.createElement(
+	        "option",
+	        { key: index },
+	        word.title
+	      );
+	    });
+	    return options;
+	  },
+	
+	  render: function render() {
+	
+	    var options = this.createSelector();
+	    return React.createElement(
+	      "select",
+	      { id: "wordsDropdown" },
+	      options
+	    );
+	  }
+	
+	});
+	
+	module.exports = GuessSelector;
 
 /***/ }
 /******/ ]);

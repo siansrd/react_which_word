@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ClueSelector = React.createClass({
+var GuessSelector = React.createClass({
 
   createSelector: function() {
     var options = this.props.words.map(function(word, index){
@@ -17,7 +17,6 @@ var ClueSelector = React.createClass({
     )
   }
 
-
 })
 
-module.exports = ClueSelector;
+module.exports = GuessSelector;
