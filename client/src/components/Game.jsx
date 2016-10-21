@@ -20,7 +20,18 @@ var Game = React.createClass({
 
    render: function() {
     return (
-      <WordList words={this.state.words}/>
+      <div>
+        <div className="wordListWrap">
+          <h2>Words</h2>
+          <WordList words={this.state.words}/>
+        </div>
+        <div className="questionsWrap">
+          <h2>Clues</h2>
+        </div>
+        <div className="guessWrap">
+          <h2>Guess</h2>
+        </div>
+      </div>
     )
    }
 

@@ -9,14 +9,14 @@
     "game": false
   }, 
   {
-    "title": "Duck",
-    "bird": true,
-    "lower": true,
+    "title": "Twister",
+    "bird": false,
+    "lower": false,
     "crazy": false,
     "joke": false,
-    "icecream": false,
-    "game": false
-  }, 
+    "icecream": true,
+    "game": true
+  },
   {
     "title": "Dipper",
     "bird": true,
@@ -45,12 +45,12 @@
     "game": false
   }, 
   {
-    "title": "Twister",
-    "bird": false,
-    "lower": false,
+    "title": "Duck",
+    "bird": true,
+    "lower": true,
     "crazy": false,
     "joke": false,
-    "icecream": true,
-    "game": true
+    "icecream": false,
+    "game": false
   }
 ]

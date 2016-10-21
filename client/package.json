@@ -17,6 +17,7 @@
     "webpack": "^1.12.12"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "react": "^0.14.8",
     "react-dom": "^0.14.8"
   },
