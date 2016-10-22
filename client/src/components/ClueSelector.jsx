@@ -11,7 +11,7 @@ var ClueSelector = React.createClass({
 
   handleChange: function(event) {
     var newIndex = event.target.value;
-    this.props.selectedClue(newIndex)
+    this.props.selectedClue(newIndex);
   },
 
   render: function(){

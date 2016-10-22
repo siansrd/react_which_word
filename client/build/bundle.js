@@ -19759,14 +19759,19 @@
 	var ClueSelector = __webpack_require__(163);
 	var GuessSelector = __webpack_require__(164);
 	
-	var questions = ["Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
+	var questions = ["Select a clue", "Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
 	
 	var Game = React.createClass({
 	  displayName: 'Game',
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { words: [], clues: questions, answer: null };
+	    return {
+	      words: [],
+	      clues: questions,
+	      answer: null,
+	      selectedClue: null
+	    };
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19781,7 +19786,16 @@
 	  },
 	
 	  setSelectedClue: function setSelectedClue(index) {
-	    console.log(index);
+	    console.log("index", index);
+	    this.setState({ selectedClue: index }, function afterChange() {
+	      console.log("state", this.state.selectedClue);
+	    });
+	  },
+	
+	  changeTitle: function changeTitle(event) {
+	    this.setState({ title: event.target.value }, function afterTitleChange() {
+	      this.validateTitle();
+	    });
 	  },
 	
 	  render: function render() {

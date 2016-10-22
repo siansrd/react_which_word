@@ -4,6 +4,7 @@ var ClueSelector = require('./ClueSelector');
 var GuessSelector = require('./GuessSelector');
 
 const questions = [
+"Select a clue",
 "Is is a species of bird?", 
 "Is it lower than usual?", 
 "Does it mean 'crazy'?",
@@ -15,7 +16,12 @@ const questions = [
 var Game = React.createClass({
 
   getInitialState: function(){
-    return { words: [], clues: questions, answer: null }
+    return { 
+      words: [], 
+      clues: questions, 
+      answer: null, 
+      selectedClue: null
+    }
   },
 
   componentDidMount: function() {
@@ -30,8 +36,21 @@ var Game = React.createClass({
   }, 
 
   setSelectedClue: function(index) {
-    console.log(index)
+    console.log("index", index)
+    this.setState({ selectedClue: index }, function afterChange() {
+      console.log("state", this.state.selectedClue)
+    });
+    
   },
+
+
+  changeTitle: function changeTitle (event) {
+      this.setState({ title: event.target.value }, function afterTitleChange () {
+        this.validateTitle();
+      });
+    },
+
+
 
   render: function() {
     return (
