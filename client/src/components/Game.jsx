@@ -3,10 +3,19 @@ var WordList = require('./WordList');
 var ClueSelector = require('./ClueSelector');
 var GuessSelector = require('./GuessSelector');
 
+const questions = [
+"Is is a species of bird?", 
+"Is it lower than usual?", 
+"Does it mean 'crazy'?",
+"Is it another word for joke?",
+"Is it a type of ice-cream?",
+"Can you play it?"
+]
+
 var Game = React.createClass({
 
     getInitialState: function(){
-      return { words: [], answer: null }
+      return { words: [], clues: questions, answer: null }
     },
 
     componentDidMount: function() {
@@ -29,7 +38,7 @@ var Game = React.createClass({
         </div>
         <div className="questionsWrap">
           <h2>Clues</h2>
-          <ClueSelector words={this.state.words}/>
+          <ClueSelector words={this.state.words} clues={this.state.clues}/>
         </div>
         <div className="guessWrap">
           <h2>Guess</h2>

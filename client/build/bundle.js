@@ -19759,12 +19759,14 @@
 	var ClueSelector = __webpack_require__(163);
 	var GuessSelector = __webpack_require__(164);
 	
+	var questions = ["Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
+	
 	var Game = React.createClass({
 	  displayName: 'Game',
 	
 	
 	  getInitialState: function getInitialState() {
-	    return { words: [], answer: null };
+	    return { words: [], clues: questions, answer: null };
 	  },
 	
 	  componentDidMount: function componentDidMount() {
@@ -19800,7 +19802,7 @@
 	          null,
 	          'Clues'
 	        ),
-	        React.createElement(ClueSelector, { words: this.state.words })
+	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues })
 	      ),
 	      React.createElement(
 	        'div',
@@ -19959,11 +19961,11 @@
 	
 	
 	  createSelector: function createSelector() {
-	    var options = this.props.words.map(function (word, index) {
+	    var options = this.props.clues.map(function (clue, index) {
 	      return React.createElement(
 	        "option",
 	        { key: index },
-	        word.title
+	        clue
 	      );
 	    });
 	    return options;
@@ -19971,10 +19973,13 @@
 	
 	  render: function render() {
 	
+	    if (!this.props.clues) {
+	      return;
+	    }
 	    var options = this.createSelector();
 	    return React.createElement(
 	      "select",
-	      { id: "wordsDropdown" },
+	      { id: "cluesDropdown" },
 	      options
 	    );
 	  }
@@ -19982,6 +19987,11 @@
 	});
 	
 	module.exports = ClueSelector;
+	
+	// var options = this.props.words.map(function(word, index){
+	//   return <option key={index}>{word.title}</option>
+	// });
+	// return options;
 
 /***/ },
 /* 164 */

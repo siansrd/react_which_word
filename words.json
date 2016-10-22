@@ -1,177 +1,57 @@
 [
   { 
     "title": "Cuckoo",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": true
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": false
-      },
-      "crazy": {
-        "clue": "Is it another word for being crazy?",
-        "answer": true
-      },
-      "joke": {
-        "clue": "Is it another word for joke?",
-        "answer": false
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": false
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": false
-      }
-    }
+    "bird": true,
+    "lower": false,
+    "crazy": true,
+    "joke": false,
+    "icecream": false,
+    "game": false
   }, 
 
   {
     "title": "Twister",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": false
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": false
-      },
-      "crazy": {
-        "clue": "Is it crazy?",
-        "answer": false
-      },
-      "joke": {
-        "clue": "Is it a joke?",
-        "answer": false
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": true
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": true
-      }
-    }
+    "bird": false,
+    "lower": false,
+    "crazy": false,
+    "joke": false,
+    "icecream": true,
+    "game": true
   },
   {
     "title": "Dipper",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": true
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": true
-      },
-      "crazy": {
-        "clue": "Is it crazy?",
-        "answer": false
-      },
-      "joke": {
-        "clue": "Is it a joke?",
-        "answer": false
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": false
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": false
-      }
-    }
+    "bird": true,
+    "lower": true,
+    "crazy": false,
+    "joke": false,
+    "icecream": false,
+    "game": false
   },
   { 
     "title": "Lark",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": true
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": false
-      },
-      "crazy": {
-        "clue": "Is it crazy?",
-        "answer": false
-      },
-      "joke": {
-        "clue": "Is it a joke?",
-        "answer": true
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": false
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": false
-      }
-    }
+    "bird": true,
+    "lower": false,
+    "crazy": false,
+    "joke": true,
+    "icecream": true,
+    "game": false
   }, 
   {
     "title": "Screwball",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": false
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": false
-      },
-      "crazy": {
-        "clue": "Is it crazy?",
-        "answer": true
-      },
-      "joke": {
-        "clue": "Is it a joke?",
-        "answer": false
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": true
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": false
-      }
-    }
+    "bird": false,
+    "lower": false,
+    "crazy": true,
+    "joke": false,
+    "icecream": true,
+    "game": false
   }, 
   {
     "title": "Duck",
-    "clues": {
-      "bird": {
-        "clue": "Is is a species of bird?",
-        "answer": true
-      },
-      "lower": {
-        "clue": "Is it lower than usual?",
-        "answer": true
-      },
-      "crazy": {
-        "clue": "Is it crazy?",
-        "answer": false
-      },
-      "joke": {
-        "clue": "Is it a joke?",
-        "answer": false
-      },
-      "icecream": {
-        "clue": "Is it a type of ice-cream?",
-        "answer": false
-      },
-      "game": {
-        "clue": "Can you play it?",
-        "answer": false
-      }
-    }
+    "bird": true,
+    "lower": true,
+    "crazy": false,
+    "joke": false,
+    "icecream": false,
+    "game": false
   }
 ]
