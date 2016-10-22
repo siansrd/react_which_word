@@ -19780,6 +19780,10 @@
 	    request.send();
 	  },
 	
+	  setSelectedClue: function setSelectedClue(index) {
+	    console.log(index);
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -19802,7 +19806,7 @@
 	          null,
 	          'Clues'
 	        ),
-	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues })
+	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues, selectedClue: this.setSelectedClue })
 	      ),
 	      React.createElement(
 	        'div',
@@ -19964,11 +19968,16 @@
 	    var options = this.props.clues.map(function (clue, index) {
 	      return React.createElement(
 	        "option",
-	        { key: index },
+	        { key: index, value: index },
 	        clue
 	      );
 	    });
 	    return options;
+	  },
+	
+	  handleChange: function handleChange(event) {
+	    var newIndex = event.target.value;
+	    this.props.selectedClue(newIndex);
 	  },
 	
 	  render: function render() {
@@ -19979,7 +19988,7 @@
 	    var options = this.createSelector();
 	    return React.createElement(
 	      "select",
-	      { id: "cluesDropdown" },
+	      { id: "cluesDropdown", onChange: this.handleChange },
 	      options
 	    );
 	  }

@@ -14,22 +14,26 @@ const questions = [
 
 var Game = React.createClass({
 
-    getInitialState: function(){
-      return { words: [], clues: questions, answer: null }
-    },
+  getInitialState: function(){
+    return { words: [], clues: questions, answer: null }
+  },
 
-    componentDidMount: function() {
-      var url = "api/words";
-      var request = new XMLHttpRequest();
-      request.open("GET", url);
-      request.onload = function() {
-        var data = JSON.parse(request.responseText);
-        this.setState({ words: data })
-      }.bind(this);
-      request.send();
-    }, 
+  componentDidMount: function() {
+    var url = "api/words";
+    var request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onload = function() {
+      var data = JSON.parse(request.responseText);
+      this.setState({ words: data })
+    }.bind(this);
+    request.send();
+  }, 
 
-   render: function() {
+  setSelectedClue: function(index) {
+    console.log(index)
+  },
+
+  render: function() {
     return (
       <div>
         <div className="wordListWrap">
@@ -38,7 +42,7 @@ var Game = React.createClass({
         </div>
         <div className="questionsWrap">
           <h2>Clues</h2>
-          <ClueSelector words={this.state.words} clues={this.state.clues}/>
+          <ClueSelector words={this.state.words} clues={this.state.clues} selectedClue={this.setSelectedClue}/>
         </div>
         <div className="guessWrap">
           <h2>Guess</h2>
@@ -46,7 +50,7 @@ var Game = React.createClass({
         </div>
       </div>
     )
-   }
+  }
 
 })
 

@@ -4,12 +4,15 @@ var ClueSelector = React.createClass({
 
   createSelector: function() {
     var options = this.props.clues.map(function(clue, index){
-      return <option key={index}>{clue}</option>
+      return <option key={index} value={index}>{clue}</option>
     });
     return options;  
   },
 
-  
+  handleChange: function(event) {
+    var newIndex = event.target.value;
+    this.props.selectedClue(newIndex)
+  },
 
   render: function(){
 
@@ -18,7 +21,7 @@ var ClueSelector = React.createClass({
     }
     var options = this.createSelector();
     return (
-      <select id="cluesDropdown">{options}</select>
+      <select id="cluesDropdown" onChange={this.handleChange}>{options}</select>
     )
 
   }
