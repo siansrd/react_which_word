@@ -1,6 +1,7 @@
 var React = require('react');
 var WordList = require('./WordList');
 var ClueSelector = require('./ClueSelector');
+var ClueResponse = require('./ClueResponse');
 var GuessSelector = require('./GuessSelector');
 
 var Game = React.createClass({
@@ -27,7 +28,6 @@ var Game = React.createClass({
   },
 
   componentDidMount: function() {
-
       var url = "api/words";
       var request = new XMLHttpRequest();
       request.open("GET", url);
@@ -48,18 +48,8 @@ var Game = React.createClass({
   setSelectedClue: function(index) {
     this.setState({ selectedClue: index }, function afterChange() {
       // TODO: call the the answer to the clue
-    });
-    
+    }); 
   },
-
-
-  changeTitle: function changeTitle (event) {
-      this.setState({ title: event.target.value }, function afterTitleChange () {
-        this.validateTitle();
-      });
-    },
-
-
 
   render: function() {
     return (
@@ -71,6 +61,7 @@ var Game = React.createClass({
         <div className="questionsWrap">
           <h2>Clues</h2>
           <ClueSelector words={this.state.words} clues={this.state.clues} selectedClue={this.setSelectedClue}/>
+          <ClueResponse/>
         </div>
         <div className="guessWrap">
           <h2>Guess</h2>

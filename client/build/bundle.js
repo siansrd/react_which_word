@@ -19757,6 +19757,7 @@
 	var React = __webpack_require__(1);
 	var WordList = __webpack_require__(160);
 	var ClueSelector = __webpack_require__(163);
+	var ClueResponse = __webpack_require__(165);
 	var GuessSelector = __webpack_require__(164);
 	
 	var Game = React.createClass({
@@ -19777,7 +19778,6 @@
 	  },
 	
 	  componentDidMount: function componentDidMount() {
-	
 	    var url = "api/words";
 	    var request = new XMLHttpRequest();
 	    request.open("GET", url);
@@ -19798,12 +19798,6 @@
 	  setSelectedClue: function setSelectedClue(index) {
 	    this.setState({ selectedClue: index }, function afterChange() {
 	      // TODO: call the the answer to the clue
-	    });
-	  },
-	
-	  changeTitle: function changeTitle(event) {
-	    this.setState({ title: event.target.value }, function afterTitleChange() {
-	      this.validateTitle();
 	    });
 	  },
 	
@@ -19829,7 +19823,8 @@
 	          null,
 	          'Clues'
 	        ),
-	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues, selectedClue: this.setSelectedClue })
+	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues, selectedClue: this.setSelectedClue }),
+	        React.createElement(ClueResponse, null)
 	      ),
 	      React.createElement(
 	        'div',
@@ -20061,6 +20056,25 @@
 	});
 	
 	module.exports = GuessSelector;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var ClueResponse = function ClueResponse(props) {
+	
+	  return React.createElement(
+	    'h3',
+	    null,
+	    'Test'
+	  );
+	};
+	
+	module.exports = ClueResponse;
 
 /***/ }
 /******/ ]);
