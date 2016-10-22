@@ -3,20 +3,22 @@ var WordList = require('./WordList');
 var ClueSelector = require('./ClueSelector');
 var GuessSelector = require('./GuessSelector');
 
-const questions = [
-"Select a clue",
-"Is is a species of bird?", 
-"Is it lower than usual?", 
-"Does it mean 'crazy'?",
-"Is it another word for joke?",
-"Is it a type of ice-cream?",
-"Can you play it?"
-]
-
 var Game = React.createClass({
 
   getInitialState: function(){
+
+    const questions = [
+      "Select a clue",
+      "Is is a species of bird?", 
+      "Is it lower than usual?", 
+      "Does it mean 'crazy'?",
+      "Is it another word for joke?",
+      "Is it a type of ice-cream?",
+      "Can you play it?"
+    ]
+
     return { 
+      correctAnswer: null,
       words: [], 
       clues: questions, 
       answer: null, 
@@ -25,20 +27,27 @@ var Game = React.createClass({
   },
 
   componentDidMount: function() {
-    var url = "api/words";
-    var request = new XMLHttpRequest();
-    request.open("GET", url);
-    request.onload = function() {
-      var data = JSON.parse(request.responseText);
-      this.setState({ words: data })
-    }.bind(this);
-    request.send();
+
+      var url = "api/words";
+      var request = new XMLHttpRequest();
+      request.open("GET", url);
+      request.onload = function() {
+        var data = JSON.parse(request.responseText);
+        this.setState({ words: data })
+      }.bind(this);
+      request.send();
+  },
+
+  componentDidUpdate: function() {
+    if (this.state.correctAnswer === null) {
+    const randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
+    this.setState({correctAnswer: randomWordObj})
+    }
   }, 
 
   setSelectedClue: function(index) {
-    console.log("index", index)
     this.setState({ selectedClue: index }, function afterChange() {
-      console.log("state", this.state.selectedClue)
+      // TODO: call the the answer to the clue
     });
     
   },

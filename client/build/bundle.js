@@ -19759,14 +19759,16 @@
 	var ClueSelector = __webpack_require__(163);
 	var GuessSelector = __webpack_require__(164);
 	
-	var questions = ["Select a clue", "Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
-	
 	var Game = React.createClass({
 	  displayName: 'Game',
 	
 	
 	  getInitialState: function getInitialState() {
+	
+	    var questions = ["Select a clue", "Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
+	
 	    return {
+	      correctAnswer: null,
 	      words: [],
 	      clues: questions,
 	      answer: null,
@@ -19775,6 +19777,7 @@
 	  },
 	
 	  componentDidMount: function componentDidMount() {
+	
 	    var url = "api/words";
 	    var request = new XMLHttpRequest();
 	    request.open("GET", url);
@@ -19785,10 +19788,16 @@
 	    request.send();
 	  },
 	
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (this.state.correctAnswer === null) {
+	      var randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
+	      this.setState({ correctAnswer: randomWordObj });
+	    }
+	  },
+	
 	  setSelectedClue: function setSelectedClue(index) {
-	    console.log("index", index);
 	    this.setState({ selectedClue: index }, function afterChange() {
-	      console.log("state", this.state.selectedClue);
+	      // TODO: call the the answer to the clue
 	    });
 	  },
 	
