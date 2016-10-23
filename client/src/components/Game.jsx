@@ -57,8 +57,6 @@ var Game = React.createClass({
   },
 
   checkGuess: function(guessId) {
-    console.log("guess id", guessId);
-    console.log("correct answer id", this.state.correctAnswer.id);
     this.setState({guessId: guessId}, function giveGuessResponse(){
       if (guessId == this.state.correctAnswer.id) {
         this.setState({guessResponse: "Correct!"})

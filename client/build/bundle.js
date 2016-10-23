@@ -19808,8 +19808,6 @@
 	  },
 	
 	  checkGuess: function checkGuess(guessId) {
-	    console.log("guess id", guessId);
-	    console.log("correct answer id", this.state.correctAnswer.id);
 	    this.setState({ guessId: guessId }, function giveGuessResponse() {
 	      if (guessId == this.state.correctAnswer.id) {
 	        this.setState({ guessResponse: "Correct!" });
@@ -20053,9 +20051,12 @@
 	var React = __webpack_require__(1);
 	
 	var ClueResponse = function ClueResponse(props) {
-	  if (props.response === !null) {
-	    var setResponse = props.response ? "Yes" : "No";
-	  }
+	
+	  if (props.response == null) {
+	    return React.createElement("p", null);
+	  };
+	
+	  var setResponse = props.response ? "Yes" : "No";
 	
 	  return React.createElement(
 	    "h3",
@@ -20117,18 +20118,17 @@
 /* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	var React = __webpack_require__(1);
 	
 	var GuessResponse = function GuessResponse(props) {
 	
-	  console.log("guess response", props.response);
 	  if (props.response == null) {
-	    return React.createElement("p", null);
+	    return React.createElement('p', null);
 	  };
 	  return React.createElement(
-	    "p",
+	    'p',
 	    null,
 	    props.response
 	  );

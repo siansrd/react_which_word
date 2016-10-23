@@ -1,9 +1,12 @@
 var React = require('react');
 
 var ClueResponse = function(props) {
-  if (props.response === !null) {
-    var setResponse = props.response ? "Yes" : "No";
-  }
+
+  if (props.response == null) {
+    return <p></p>
+  };
+
+  var setResponse = props.response ? "Yes" : "No";
   
   return (
     <h3>{setResponse}</h3>
