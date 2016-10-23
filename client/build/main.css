@@ -7,6 +7,14 @@ h1, h2, h3 {
   font-weight: normal;
 }
 
+h1 {
+  text-align: center;
+}
+
+h2, h3 {
+  text-decoration: underline;
+}
+
 .word {
   cursor: pointer;
 }
@@ -16,6 +24,8 @@ h1, h2, h3 {
 }
 
 .column {
+  text-align: center;
+  background-color: #fcf5bd;
   width: 28%;
   float: left;
   padding: 1%;
