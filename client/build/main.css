@@ -25,6 +25,7 @@ h2, h3 {
 
 .column {
   text-align: center;
+  height: 400px;
   background-color: #fcf5bd;
   width: 28%;
   float: left;
