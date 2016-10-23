@@ -23,7 +23,9 @@ var Game = React.createClass({
       words: [], 
       clues: questions, 
       clueResponse: null, 
-      selectedClue: null
+      selectedClue: null,
+      guessId: null,
+      guessResponse: null
     }
   },
 
@@ -42,24 +44,28 @@ var Game = React.createClass({
     if (this.state.correctAnswer === null) {
     const randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
     this.setState({correctAnswer: randomWordObj})
-    console.log(randomWordObj)
+    console.log("correct answer", randomWordObj)
     }
   }, 
 
   setSelectedClue: function(index) {
-    this.setState({ selectedClue: index }, function giveResponse() {
-      console.log(this.state.correctAnswer.clue[this.state.selectedClue]);
-      
+    this.setState({ selectedClue: index }, function giveClueResponse() {        
       var index = this.state.selectedClue;
       var response = this.state.correctAnswer.clue[index];
-      this.setState({clueResponse: response});
-      
-      console.log("states clueResponse", this.state.clueResponse);
+      this.setState({clueResponse: response});    
     }.bind(this)); 
   },
 
   checkGuess: function(guessId) {
-    console.log(guessId);
+    console.log("guess id", guessId);
+    console.log("correct answer id", this.state.correctAnswer.id);
+    this.setState({guessId: guessId}, function giveGuessResponse(){
+      if (guessId == this.state.correctAnswer.id) {
+        this.setState({guessResponse: "Correct!"})
+      } else {
+        this.setState({guessResponse: "Try Again!"})
+      }
+    }.bind(this));
   },
 
   render: function() {
@@ -77,7 +83,7 @@ var Game = React.createClass({
         <div className="column">
           <h2>Guess</h2>
           <GuessSelector words={this.state.words} makeGuess={this.checkGuess}/>
-          <GuessResponse/>
+          <GuessResponse response={this.state.guessResponse}/>
         </div>
       </div>
     )

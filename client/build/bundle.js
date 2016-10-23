@@ -19774,7 +19774,9 @@
 	      words: [],
 	      clues: questions,
 	      clueResponse: null,
-	      selectedClue: null
+	      selectedClue: null,
+	      guessId: null,
+	      guessResponse: null
 	    };
 	  },
 	
@@ -19793,24 +19795,28 @@
 	    if (this.state.correctAnswer === null) {
 	      var randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
 	      this.setState({ correctAnswer: randomWordObj });
-	      console.log(randomWordObj);
+	      console.log("correct answer", randomWordObj);
 	    }
 	  },
 	
 	  setSelectedClue: function setSelectedClue(index) {
-	    this.setState({ selectedClue: index }, function giveResponse() {
-	      console.log(this.state.correctAnswer.clue[this.state.selectedClue]);
-	
+	    this.setState({ selectedClue: index }, function giveClueResponse() {
 	      var index = this.state.selectedClue;
 	      var response = this.state.correctAnswer.clue[index];
 	      this.setState({ clueResponse: response });
-	
-	      console.log("states clueResponse", this.state.clueResponse);
 	    }.bind(this));
 	  },
 	
 	  checkGuess: function checkGuess(guessId) {
-	    console.log(guessId);
+	    console.log("guess id", guessId);
+	    console.log("correct answer id", this.state.correctAnswer.id);
+	    this.setState({ guessId: guessId }, function giveGuessResponse() {
+	      if (guessId == this.state.correctAnswer.id) {
+	        this.setState({ guessResponse: "Correct!" });
+	      } else {
+	        this.setState({ guessResponse: "Try Again!" });
+	      }
+	    }.bind(this));
 	  },
 	
 	  render: function render() {
@@ -19847,7 +19853,7 @@
 	          'Guess'
 	        ),
 	        React.createElement(GuessSelector, { words: this.state.words, makeGuess: this.checkGuess }),
-	        React.createElement(GuessResponse, null)
+	        React.createElement(GuessResponse, { response: this.state.guessResponse })
 	      )
 	    );
 	  }
@@ -20047,11 +20053,8 @@
 	var React = __webpack_require__(1);
 	
 	var ClueResponse = function ClueResponse(props) {
-	
-	  console.log("props.response", props.response);
 	  if (props.response === !null) {
 	    var setResponse = props.response ? "Yes" : "No";
-	    console.log("response string", setResponse);
 	  }
 	
 	  return React.createElement(
@@ -20114,16 +20117,20 @@
 /* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	
 	var GuessResponse = function GuessResponse(props) {
 	
+	  console.log("guess response", props.response);
+	  if (props.response == null) {
+	    return React.createElement("p", null);
+	  };
 	  return React.createElement(
-	    'h3',
+	    "p",
 	    null,
-	    'Test'
+	    props.response
 	  );
 	};
 	module.exports = GuessResponse;
