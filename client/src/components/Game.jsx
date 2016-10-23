@@ -3,6 +3,7 @@ var WordList = require('./WordList');
 var ClueSelector = require('./ClueSelector');
 var ClueResponse = require('./ClueResponse');
 var GuessSelector = require('./GuessSelector');
+var GuessResponse = require('./GuessResponse')
 
 var Game = React.createClass({
 
@@ -57,6 +58,10 @@ var Game = React.createClass({
     }.bind(this)); 
   },
 
+  checkGuess: function(guessId) {
+    console.log(guessId);
+  },
+
   render: function() {
     return (
       <div>
@@ -71,7 +76,8 @@ var Game = React.createClass({
         </div>
         <div className="column">
           <h2>Guess</h2>
-          <GuessSelector words={this.state.words}/>
+          <GuessSelector words={this.state.words} makeGuess={this.checkGuess}/>
+          <GuessResponse/>
         </div>
       </div>
     )

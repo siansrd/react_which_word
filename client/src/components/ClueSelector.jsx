@@ -9,7 +9,7 @@ var ClueSelector = React.createClass({
     return options;  
   },
 
-  handleChange: function(event) {
+  handleClueChange: function(event) {
     var newIndex = event.target.value;
     this.props.selectedClue(newIndex);
   },
@@ -21,7 +21,7 @@ var ClueSelector = React.createClass({
     }
     var options = this.createSelector();
     return (
-      <select id="cluesDropdown" onChange={this.handleChange}>
+      <select id="cluesDropdown" onChange={this.handleClueChange}>
         <option selected="true" disabled="disabled">Select Clue</option>
         {options}
       </select>

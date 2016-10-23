@@ -19759,6 +19759,7 @@
 	var ClueSelector = __webpack_require__(163);
 	var ClueResponse = __webpack_require__(164);
 	var GuessSelector = __webpack_require__(165);
+	var GuessResponse = __webpack_require__(166);
 	
 	var Game = React.createClass({
 	  displayName: 'Game',
@@ -19808,6 +19809,10 @@
 	    }.bind(this));
 	  },
 	
+	  checkGuess: function checkGuess(guessId) {
+	    console.log(guessId);
+	  },
+	
 	  render: function render() {
 	    return React.createElement(
 	      'div',
@@ -19841,7 +19846,8 @@
 	          null,
 	          'Guess'
 	        ),
-	        React.createElement(GuessSelector, { words: this.state.words })
+	        React.createElement(GuessSelector, { words: this.state.words, makeGuess: this.checkGuess }),
+	        React.createElement(GuessResponse, null)
 	      )
 	    );
 	  }
@@ -20000,7 +20006,7 @@
 	    return options;
 	  },
 	
-	  handleChange: function handleChange(event) {
+	  handleClueChange: function handleClueChange(event) {
 	    var newIndex = event.target.value;
 	    this.props.selectedClue(newIndex);
 	  },
@@ -20013,7 +20019,7 @@
 	    var options = this.createSelector();
 	    return React.createElement(
 	      "select",
-	      { id: "cluesDropdown", onChange: this.handleChange },
+	      { id: "cluesDropdown", onChange: this.handleClueChange },
 	      React.createElement(
 	        "option",
 	        { selected: "true", disabled: "disabled" },
@@ -20073,11 +20079,16 @@
 	    var options = this.props.words.map(function (word, index) {
 	      return React.createElement(
 	        "option",
-	        { key: index },
+	        { key: index, value: word.id },
 	        word.title
 	      );
 	    });
 	    return options;
+	  },
+	
+	  handleGuessChange: function handleGuessChange(event, index) {
+	    var guessId = event.target.value;
+	    this.props.makeGuess(guessId);
 	  },
 	
 	  render: function render() {
@@ -20085,7 +20096,12 @@
 	    var options = this.createSelector();
 	    return React.createElement(
 	      "select",
-	      { id: "wordsDropdown" },
+	      { id: "wordsDropdown", onChange: this.handleGuessChange },
+	      React.createElement(
+	        "option",
+	        { selected: "true", disabled: "disabled" },
+	        "Make Guess"
+	      ),
 	      options
 	    );
 	  }
@@ -20093,6 +20109,24 @@
 	});
 	
 	module.exports = GuessSelector;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(1);
+	
+	var GuessResponse = function GuessResponse(props) {
+	
+	  return React.createElement(
+	    'h3',
+	    null,
+	    'Test'
+	  );
+	};
+	module.exports = GuessResponse;
 
 /***/ }
 /******/ ]);
