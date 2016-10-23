@@ -21,7 +21,10 @@ var ClueSelector = React.createClass({
     }
     var options = this.createSelector();
     return (
-      <select id="cluesDropdown" onChange={this.handleChange}>{options}</select>
+      <select id="cluesDropdown" onChange={this.handleChange}>
+        <option selected="true" disabled="disabled">Select Clue</option>
+        {options}
+      </select>
     )
 
   }

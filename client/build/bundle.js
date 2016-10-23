@@ -19757,8 +19757,8 @@
 	var React = __webpack_require__(1);
 	var WordList = __webpack_require__(160);
 	var ClueSelector = __webpack_require__(163);
-	var ClueResponse = __webpack_require__(165);
-	var GuessSelector = __webpack_require__(164);
+	var ClueResponse = __webpack_require__(164);
+	var GuessSelector = __webpack_require__(165);
 	
 	var Game = React.createClass({
 	  displayName: 'Game',
@@ -19766,13 +19766,13 @@
 	
 	  getInitialState: function getInitialState() {
 	
-	    var questions = ["Select a clue", "Is is a species of bird?", "Is it lower than usual?", "Does it mean 'crazy'?", "Is it another word for joke?", "Is it a type of ice-cream?", "Can you play it?"];
+	    var questions = ["Is is a species of bird?", "Is it lower than usual?", "Is it another word for 'crazy'?", "Is it another word for a joke?", "Is it a type of ice-cream?", "Can you play it?"];
 	
 	    return {
 	      correctAnswer: null,
 	      words: [],
 	      clues: questions,
-	      answer: null,
+	      clueResponse: null,
 	      selectedClue: null
 	    };
 	  },
@@ -19792,13 +19792,20 @@
 	    if (this.state.correctAnswer === null) {
 	      var randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
 	      this.setState({ correctAnswer: randomWordObj });
+	      console.log(randomWordObj);
 	    }
 	  },
 	
 	  setSelectedClue: function setSelectedClue(index) {
-	    this.setState({ selectedClue: index }, function afterChange() {
-	      // TODO: call the the answer to the clue
-	    });
+	    this.setState({ selectedClue: index }, function giveResponse() {
+	      console.log(this.state.correctAnswer.clue[this.state.selectedClue]);
+	
+	      var index = this.state.selectedClue;
+	      var response = this.state.correctAnswer.clue[index];
+	      this.setState({ clueResponse: response });
+	
+	      console.log("states clueResponse", this.state.clueResponse);
+	    }.bind(this));
 	  },
 	
 	  render: function render() {
@@ -19807,7 +19814,7 @@
 	      null,
 	      React.createElement(
 	        'div',
-	        { className: 'wordListWrap' },
+	        { className: 'column' },
 	        React.createElement(
 	          'h2',
 	          null,
@@ -19817,18 +19824,18 @@
 	      ),
 	      React.createElement(
 	        'div',
-	        { className: 'questionsWrap' },
+	        { className: 'column' },
 	        React.createElement(
 	          'h2',
 	          null,
 	          'Clues'
 	        ),
 	        React.createElement(ClueSelector, { words: this.state.words, clues: this.state.clues, selectedClue: this.setSelectedClue }),
-	        React.createElement(ClueResponse, null)
+	        React.createElement(ClueResponse, { response: this.state.clueResponse })
 	      ),
 	      React.createElement(
 	        'div',
-	        { className: 'guessWrap' },
+	        { className: 'column' },
 	        React.createElement(
 	          'h2',
 	          null,
@@ -20007,6 +20014,11 @@
 	    return React.createElement(
 	      "select",
 	      { id: "cluesDropdown", onChange: this.handleChange },
+	      React.createElement(
+	        "option",
+	        { selected: "true", disabled: "disabled" },
+	        "Select Clue"
+	      ),
 	      options
 	    );
 	  }
@@ -20022,6 +20034,31 @@
 
 /***/ },
 /* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var React = __webpack_require__(1);
+	
+	var ClueResponse = function ClueResponse(props) {
+	
+	  console.log("props.response", props.response);
+	  if (props.response === !null) {
+	    var setResponse = props.response ? "Yes" : "No";
+	    console.log("response string", setResponse);
+	  }
+	
+	  return React.createElement(
+	    "h3",
+	    null,
+	    setResponse
+	  );
+	};
+	
+	module.exports = ClueResponse;
+
+/***/ },
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20056,25 +20093,6 @@
 	});
 	
 	module.exports = GuessSelector;
-
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(1);
-	
-	var ClueResponse = function ClueResponse(props) {
-	
-	  return React.createElement(
-	    'h3',
-	    null,
-	    'Test'
-	  );
-	};
-	
-	module.exports = ClueResponse;
 
 /***/ }
 /******/ ]);

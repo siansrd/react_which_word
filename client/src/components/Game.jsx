@@ -9,11 +9,10 @@ var Game = React.createClass({
   getInitialState: function(){
 
     const questions = [
-      "Select a clue",
       "Is is a species of bird?", 
       "Is it lower than usual?", 
-      "Does it mean 'crazy'?",
-      "Is it another word for joke?",
+      "Is it another word for 'crazy'?",
+      "Is it another word for a joke?",
       "Is it a type of ice-cream?",
       "Can you play it?"
     ]
@@ -22,7 +21,7 @@ var Game = React.createClass({
       correctAnswer: null,
       words: [], 
       clues: questions, 
-      answer: null, 
+      clueResponse: null, 
       selectedClue: null
     }
   },
@@ -42,28 +41,35 @@ var Game = React.createClass({
     if (this.state.correctAnswer === null) {
     const randomWordObj = this.state.words[Math.floor(Math.random() * this.state.words.length)];
     this.setState({correctAnswer: randomWordObj})
+    console.log(randomWordObj)
     }
   }, 
 
   setSelectedClue: function(index) {
-    this.setState({ selectedClue: index }, function afterChange() {
-      // TODO: call the the answer to the clue
-    }); 
+    this.setState({ selectedClue: index }, function giveResponse() {
+      console.log(this.state.correctAnswer.clue[this.state.selectedClue]);
+      
+      var index = this.state.selectedClue;
+      var response = this.state.correctAnswer.clue[index];
+      this.setState({clueResponse: response});
+      
+      console.log("states clueResponse", this.state.clueResponse);
+    }.bind(this)); 
   },
 
   render: function() {
     return (
       <div>
-        <div className="wordListWrap">
+        <div className="column">
           <h2>Words</h2>
           <WordList words={this.state.words}/>
         </div>
-        <div className="questionsWrap">
+        <div className="column">
           <h2>Clues</h2>
           <ClueSelector words={this.state.words} clues={this.state.clues} selectedClue={this.setSelectedClue}/>
-          <ClueResponse/>
+          <ClueResponse response={this.state.clueResponse}/>
         </div>
-        <div className="guessWrap">
+        <div className="column">
           <h2>Guess</h2>
           <GuessSelector words={this.state.words}/>
         </div>

@@ -1,57 +1,27 @@
 [
   { 
     "title": "Cuckoo",
-    "bird": true,
-    "lower": false,
-    "crazy": true,
-    "joke": false,
-    "icecream": false,
-    "game": false
+    "clue": [true, false, true, false, false, false]
   }, 
 
   {
     "title": "Twister",
-    "bird": false,
-    "lower": false,
-    "crazy": false,
-    "joke": false,
-    "icecream": true,
-    "game": true
+    "clue": [false, false, false, false, true, true]
   },
   {
     "title": "Dipper",
-    "bird": true,
-    "lower": true,
-    "crazy": false,
-    "joke": false,
-    "icecream": false,
-    "game": false
+    "clue": [true, true, false, false, false, false]
   },
   { 
     "title": "Lark",
-    "bird": true,
-    "lower": false,
-    "crazy": false,
-    "joke": true,
-    "icecream": true,
-    "game": false
+    "clue": [true, false, false, true, false, false]
   }, 
   {
     "title": "Screwball",
-    "bird": false,
-    "lower": false,
-    "crazy": true,
-    "joke": false,
-    "icecream": true,
-    "game": false
+    "clue": [false, false, true, false, true, false]
   }, 
   {
     "title": "Duck",
-    "bird": true,
-    "lower": true,
-    "crazy": false,
-    "joke": false,
-    "icecream": false,
-    "game": false
+    "clue": [true, true, false, false, false, false]
   }
 ]
